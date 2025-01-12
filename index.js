@@ -1,18 +1,35 @@
 var http = require("http");
 
-//create a server object:
 http
   .createServer(function (req, res) {
     res.setHeader(
       "Access-Control-Allow-Origin",
       "https://secret-santaclaus.github.io/index.html"
     );
-    res.write("Hello from CodeSandbox!"); //write a response to the client
-    envoyerMail("pti.baub@gmail.com");
+    res.write("Réussi");
+    
 
-    res.end(); //end the response
+    /*
+    let personne1 = Math.floor(Math.random() * (nom.length - 1));
+    let NomPers1 = nom[personne1];
+    let destinataire = personne1;
+    let envoyeur;
+    let longueur = nom.length - 1;
+
+    for (let i = 0; i < longueur; i++) {
+      envoyeur = mail[destinataire];
+      nom.splice(destinataire, 1);
+      mail.splice(destinataire, 1);
+      let long = nom.length - 1;
+      destinataire = Math.floor(Math.random() * long);
+      envoyerMail(envoyeur, nom[destinataire]);
+    }
+    envoyerMail(mail[0], NomPers1);
+    */
+    
+    res.end();
   })
-  .listen(8080); //the server object listens on port 8080
+  .listen(8080);
 
 const nodemailer = require("nodemailer");
 
