@@ -6,7 +6,7 @@ http
       "Access-Control-Allow-Origin",
       "https://secret-santaclaus.github.io"
     );
-    res.write(toString(req));
+    res.write(req.url);
     
 
     /*
