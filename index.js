@@ -1,12 +1,12 @@
 var http = require("http");
 
 http
-  .createServer(function (req, res) {
+  .createServer((req, res)=>{
     res.setHeader(
       "Access-Control-Allow-Origin",
-      "https://secret-santaclaus.github.io/index.mjs"
+      "https://secret-santaclaus.github.io"
     );
-    res.write("Réussi");
+    res.write(req);
     
 
     /*
