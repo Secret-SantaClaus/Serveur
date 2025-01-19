@@ -8,10 +8,12 @@ http
       "Access-Control-Allow-Origin",
       "https://secret-santaclaus.github.io"
     );
+    if (req.url +! "/") {
     let value
     let nom
     let mail
-    let data = req.url.split("?")
+    let data = req.url
+    data.split("?")
     data[1].split("&")
     value = data[1][0].split("=")
     nom = value[1]
@@ -40,7 +42,7 @@ http
       envoyerMail(envoyeur, nom[destinataire]);
     }
     envoyerMail(mail[0], NomPers1);
-    
+    }
     res.write(req.url);
     res.end(etat);
   })
