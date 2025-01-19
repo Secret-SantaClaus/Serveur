@@ -1,15 +1,24 @@
 var http = require("http");
 
+let etat
+
 http
   .createServer((req, res)=>{
     res.setHeader(
       "Access-Control-Allow-Origin",
       "https://secret-santaclaus.github.io"
     );
-    res.write(req.url);
-    
+    let data = req.url.split("?")
+    data.split("&")
+    nom = data[0].split("=")
+    nom.shift()
+    nom.pop()
+    mail = data[1].split("=")
+    mail.shift()
+    mail.pop()
+    nom.split(",")
+    mail.split(",")
 
-    /*
     let personne1 = Math.floor(Math.random() * (nom.length - 1));
     let NomPers1 = nom[personne1];
     let destinataire = personne1;
@@ -25,9 +34,9 @@ http
       envoyerMail(envoyeur, nom[destinataire]);
     }
     envoyerMail(mail[0], NomPers1);
-    */
     
-    res.end();
+    res.write(req.url);
+    res.end(etat);
   })
   .listen(8080);
 
@@ -54,9 +63,9 @@ function envoyerMail(email) {
 
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
-      console.log("Error:", error);
+      etat = "Error:" + error;
     } else {
-      console.log("Email sent: ", info.response);
+      etat = "Email sent: " + info.response;
     }
   });
 }
