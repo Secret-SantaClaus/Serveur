@@ -8,7 +8,7 @@ http
       "Access-Control-Allow-Origin",
       "https://secret-santaclaus.github.io"
     );
-    if (req.url +! "/") {
+    if (req.url != "/") {
       let value
       let nom
       let mail
