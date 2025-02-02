@@ -4,8 +4,8 @@ let etat
 
 http
   .createServer((req, res)=>{
-    res.writeHead(200, {'Access-Control-Allow-Origin' : '*'});
     if (req.method == "POST") {
+      res.writeHead(200, {'Access-Control-Allow-Origin' : '*'});
       let value;
       let nom;
       let mail;
@@ -34,9 +34,9 @@ http
         envoyerMail(envoyeur, nom[destinataire]);
       }
       envoyerMail(mail[0], nomPers1);
+      res.write("reussi")
+      res.end();
     }
-    res.write("reussi")
-    res.end();
   })
   .listen(8080);
 
@@ -58,7 +58,7 @@ function envoyerMail(email, dest) {
     to: email,
     subject: "Reussi",
     text: "Noël",
-    html: "<p>Bonjour</br>Vous devez acheter un cadeau pour </p>"+dest,
+    html: "<p>Bonjour<br>Vous devez acheter un cadeau pour </p>"+dest,
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
