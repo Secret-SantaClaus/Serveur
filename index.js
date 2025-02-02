@@ -4,8 +4,8 @@ let etat
 
 http
   .createServer((req, res)=>{
-    res.writeHead(200, {'Access-Control-Allow-Origin' : '*'});
-    if (req.url != "/") {
+    res.writeHead(200, {'Access-Control-Allow-Origin' : 'https://secret-santaclaus.github.io/'});
+    if (req.method == "POST") {
       let value;
       let nom;
       let mail;
@@ -18,8 +18,6 @@ http
       mail = value[1];
       mail = mail.substring(3, mail.length -7);
       mail = mail.split("%2C");
-      console.log(nom);
-      console.log(mail);
       
       let personne1 = Math.floor(Math.random() * (nom.length - 1));
       let nomPers1 = nom[personne1];
@@ -36,8 +34,7 @@ http
         envoyerMail(envoyeur, nom[destinataire]);
       }
       envoyerMail(mail[0], nomPers1);
-    }
-    res.write("reussi");
+    } => function {res.write("reussi")}
     res.end();
   })
   .listen(8080);
@@ -60,7 +57,7 @@ function envoyerMail(email, dest) {
     to: email,
     subject: "Reussi",
     text: "Noël",
-    html: "<p>Bonjour,\nVous devez acheter un cadeau pour </p>"+dest,
+    html: "<p>Bonjour,/nVous devez acheter un cadeau pour </p>"+dest,
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
