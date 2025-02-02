@@ -4,7 +4,7 @@ let etat
 
 http
   .createServer((req, res)=>{
-    res.writeHead(200, {'Access-Control-Allow-Origin' : 'https://secret-santaclaus.github.io/'});
+    res.writeHead(200, {'Access-Control-Allow-Origin' : '*'});
     if (req.method == "POST") {
       let value;
       let nom;
@@ -58,7 +58,7 @@ function envoyerMail(email, dest) {
     to: email,
     subject: "Reussi",
     text: "Noël",
-    html: "<p>Bonjour,/nVous devez acheter un cadeau pour </p>"+dest,
+    html: "<p>Bonjour</br>Vous devez acheter un cadeau pour </p>"+dest,
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
