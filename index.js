@@ -4,21 +4,18 @@ let etat
 
 http
   .createServer((req, res)=>{
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.writeHead(200, {'Access-Control-Allow-Origin' : '*'});
     if (req.url != "/") {
       let value;
       let nom;
       let mail;
-      let data = req.url;
-      data = data.split("?");
-      data = data[1].split("&");
+      let data = req.url.split("&");
       value = data[0].split("=");
       nom = value[1];
       nom = nom.substring(1, nom.length -1);
       nom.split("%2C");
       value = data[1].split("=");
       mail = value[1];
-      mail = data[1].split("=");
       mail = mail.substring(1, mail.length -1);
       mail.split("%2C");
 
