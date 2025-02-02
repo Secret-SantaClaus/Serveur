@@ -10,16 +10,16 @@ http
       let nom;
       let mail;
       let data = req.url;
-      data.split("?");
-      data[1].split("&");
-      value = data[1][0].split("=");
+      data = data.split("?");
+      data = data[1].split("&");
+      value = data[0].split("=");
       nom = value[1];
-      nom = nom.substring(1, nom.length -1)
+      nom = nom.substring(1, nom.length -1);
       nom.split("%2C");
-      value = data[1][0].spli("=");
+      value = data[1].split("=");
       mail = value[1];
       mail = data[1].split("=");
-      mail = mail.substring(1, mail.length -1)
+      mail = mail.substring(1, mail.length -1);
       mail.split("%2C");
 
       let personne1 = Math.floor(Math.random() * (nom.length - 1));
