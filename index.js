@@ -18,9 +18,11 @@ http
       mail = value[1];
       mail = mail.substring(1, mail.length -1);
       mail.split("%2C");
-
+      console.log(nom);
+      console.log(mail);
+      
       let personne1 = Math.floor(Math.random() * (nom.length - 1));
-      let NomPers1 = nom[personne1];
+      let nomPers1 = nom[personne1];
       let destinataire = personne1;
       let envoyeur;
       let longueur = nom.length - 1;
@@ -33,10 +35,10 @@ http
         destinataire = Math.floor(Math.random() * long);
         envoyerMail(envoyeur, nom[destinataire]);
       }
-      envoyerMail(mail[0], NomPers1);
+      envoyerMail(mail[0], nomPers1);
     }
     res.write(req.url);
-    res.end(etat);
+    res.end();
   })
   .listen(8080);
 
