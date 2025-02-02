@@ -14,14 +14,12 @@ http
       data[1].split("&");
       value = data[1][0].split("=");
       nom = value[1];
-      nom.shift();
-      nom.pop();
+      nom = nom.substring(1, nom.length -1)
       nom.split(",");
       value = data[1][0].spli("=");
       mail = value[1];
       mail = data[1].split("=");
-      mail.shift();
-      mail.pop();
+      mail = mail.substring(1, mail.length -1)
       mail.split(",");
 
       let personne1 = Math.floor(Math.random() * (nom.length - 1));
