@@ -37,7 +37,7 @@ http
       }
       envoyerMail(mail[0], nomPers1);
     }
-    res.write(req.url);
+    res.write(etat);
     res.end();
   })
   .listen(8080);
@@ -54,13 +54,13 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-function envoyerMail(email) {
+function envoyerMail(email, dest) {
   const mailOptions = {
     from: "noel.secret.santaclaus@gmail.com",
     to: email,
     subject: "Reussi",
     text: "Noël",
-    html: "<p>Argh</p>",
+    html: "<p>Bonjour,\nVous devez acheter un cadeau pour </p>"+dest,
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
