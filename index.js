@@ -37,7 +37,7 @@ http
       }
       envoyerMail(mail[0], nomPers1);
     }
-    res.write(url);
+    res.write("reussi");
     res.end();
   })
   .listen(8080);
