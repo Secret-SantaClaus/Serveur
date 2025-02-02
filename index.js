@@ -15,12 +15,12 @@ http
       value = data[1][0].split("=");
       nom = value[1];
       nom = nom.substring(1, nom.length -1)
-      nom.split(",");
+      nom.split("%2C");
       value = data[1][0].spli("=");
       mail = value[1];
       mail = data[1].split("=");
       mail = mail.substring(1, mail.length -1)
-      mail.split(",");
+      mail.split("%2C");
 
       let personne1 = Math.floor(Math.random() * (nom.length - 1));
       let NomPers1 = nom[personne1];
