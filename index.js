@@ -4,7 +4,6 @@ http
   .createServer((req, res)=>{
     let reponse = "reussi";
     res.writeHead(200, {'Access-Control-Allow-Origin' : '*'});
-    console.log(req.method)
     if (req.method == "POST") {
       let value;
       let nom;
@@ -33,11 +32,10 @@ http
         destinataire = Math.floor(Math.random() * long);
         envoyerMail(envoyeur, nom[destinataire]);
       }
-    } else {
+      envoyerMail(mail[0], nomPers1);
+    }  else {
       reponse = "Accès refusé"
     }
-    
-    envoyerMail(mail[0], nomPers1);
     res.write(reponse);
     res.end();
   })
