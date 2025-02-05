@@ -1,11 +1,10 @@
 var http = require("http");
 
-let etat
-
 http
   .createServer((req, res)=>{
+    let reponse = "reussi";
+    res.writeHead(200, {'Access-Control-Allow-Origin' : '*'});
     if (req.method == "POST") {
-      res.writeHead(200, {'Access-Control-Allow-Origin' : '*'});
       let value;
       let nom;
       let mail;
@@ -33,10 +32,13 @@ http
         destinataire = Math.floor(Math.random() * long);
         envoyerMail(envoyeur, nom[destinataire]);
       }
-      envoyerMail(mail[0], nomPers1);
-      res.write("reussi")
-      res.end(etat);
+    } else {
+      reponse = "Accès refusé"
     }
+    
+    envoyerMail(mail[0], nomPers1);
+    res.write(reponse);
+    res.end(etat);
   })
   .listen(8080);
 
