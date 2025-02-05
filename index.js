@@ -4,6 +4,7 @@ http
   .createServer((req, res)=>{
     let reponse = "reussi";
     res.writeHead(200, {'Access-Control-Allow-Origin' : '*'});
+    console.log(req.method)
     if (req.method == "POST") {
       let value;
       let nom;
