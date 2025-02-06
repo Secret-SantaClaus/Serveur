@@ -60,7 +60,7 @@ function envoyerMail(email, dest) {
   };
   
   let etat = "argh"
-  transporter.sendMail(mailOptions, etat = erreur(error, info);
+  transporter.sendMail(mailOptions, etat = erreur(error, info));
   return etat
 }
 
