@@ -65,4 +65,5 @@ function envoyerMail(email, dest) {
       etat = "Email sent: " + info.response;
     }
   });
+  return etat
 }
