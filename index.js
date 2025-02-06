@@ -17,7 +17,7 @@ http
       let destinataire = personne1;
       let envoyeur;
       let longueur = nom.length - 1;
-      let etat = ""
+      let etat = "argh"
       
       for (let i = 0; i < longueur; i++) {
         envoyeur = mail[destinataire];
@@ -25,9 +25,9 @@ http
         mail.splice(destinataire, 1);
         let long = nom.length - 1;
         destinataire = Math.floor(Math.random() * long);
-        etat += envoyerMail(envoyeur, nom[destinataire]);
+        envoyerMail(envoyeur, nom[destinataire]);
       }
-      etat += envoyerMail(mail[0], nomPers1);
+      envoyerMail(mail[0], nomPers1);
       reponse = etat
     }  else {
       res.writeHead(403, {'Access-Control-Allow-Origin' : 'https://secret-santaclaus.github.io/'});
@@ -60,11 +60,7 @@ function envoyerMail(email, dest) {
   };
   
   let etat = "argh"
-  transporter.sendMail(mailOptions, etat = erreur(error, info));
-  return etat
-}
-
-function erreur(error, info) {
+  transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       etat = "Error:" + error;
       console.log(etat)
@@ -72,5 +68,8 @@ function erreur(error, info) {
       etat = "Email sent: " + info.response;
       console.log(etat)
     }
-  return etat
+  });
 }
+
+
+
