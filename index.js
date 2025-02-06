@@ -17,16 +17,17 @@ http
       let destinataire = personne1;
       let envoyeur;
       let longueur = nom.length - 1;
-
+      let etat = ""
+      
       for (let i = 0; i < longueur; i++) {
         envoyeur = mail[destinataire];
         nom.splice(destinataire, 1);
         mail.splice(destinataire, 1);
         let long = nom.length - 1;
         destinataire = Math.floor(Math.random() * long);
-        envoyerMail(envoyeur, nom[destinataire]);
+        etat += envoyerMail(envoyeur, nom[destinataire]);
       }
-      envoyerMail(mail[0], nomPers1);
+      etat += envoyerMail(mail[0], nomPers1);
       reponse = etat
     }  else {
       res.writeHead(403, {'Access-Control-Allow-Origin' : 'https://secret-santaclaus.github.io/'});
@@ -60,11 +61,12 @@ function envoyerMail(email, dest) {
 
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
-      let etat = "Error:" + error;
+      etat = "Error:" + error;
+      let argh =etat
     } else {
-      let etat = "Email sent: " + info.response;
+      etat = "Email sent: " + info.response;
+      let argh = etat
     }
-    return etat
   });
-  return etat
+  return argh
 }
