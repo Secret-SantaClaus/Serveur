@@ -63,8 +63,10 @@ function envoyerMail(email, dest) {
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       etat = "Error:" + error;
+      console.log(etat)
     } else {
       etat = "Email sent: " + info.response;
+      console.log(etat)
     }
   });
   return etat
