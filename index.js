@@ -3,18 +3,16 @@ var http = require("http");
 http
   .createServer((req, res)=>{
     let reponse = "reussi";
-    res.writeHead(200, {'Access-Control-Allow-Origin' : '*'});
     if (req.method == "POST") {
-      let value;
-      let nom;
-      let mail;
+      res.writeHead(200, {'Access-Control-Allow-Origin' : 'https://secret-santaclaus.github.io/'});
+      
       let data = req.url.split("&");
-      value = data[0].split("=");
-      nom = value[1];
+      let value = data[0].split("=");
+      let nom = value[1];
       nom = nom.substring(3, nom.length -7);
       nom = nom.split("%2C");
       value = data[1].split("=");
-      mail = value[1];
+      let mail = value[1];
       mail = mail.substring(3, mail.length -7);
       mail = mail.split("%2C");
       
@@ -34,6 +32,7 @@ http
       }
       envoyerMail(mail[0], nomPers1);
     }  else {
+      res.writeHead(403, {'Access-Control-Allow-Origin' : 'https://secret-santaclaus.github.io/'});
       reponse = "Accès refusé"
     }
     res.write(reponse);
