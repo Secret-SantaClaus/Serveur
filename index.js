@@ -59,7 +59,7 @@ function envoyerMail(email, dest) {
     html: "<p>Bonjour<br>Vous devez acheter un cadeau pour </p>"+dest,
   };
   
-  let etat = ""
+  let etat = "argh"
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       etat = "Error:" + error;
