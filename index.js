@@ -58,14 +58,14 @@ function envoyerMail(email, dest) {
     text: "Noël",
     html: "<p>Bonjour<br>Vous devez acheter un cadeau pour </p>"+dest,
   };
-
-  transporter.sendMail(mailOptions, argh = function (error, info) {
+  
+  let etat = ""
+  transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       etat = "Error:" + error;
     } else {
       etat = "Email sent: " + info.response;
     }
-    return etat
   });
-  return argh
+  return etat
 }
