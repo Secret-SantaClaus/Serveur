@@ -7,14 +7,12 @@ http
       res.writeHead(200, {'Access-Control-Allow-Origin' : 'https://secret-santaclaus.github.io/'});
       
       let data = req.url.split("&");
-      let value = data[0].split("=");
-      let nom = value[1];
-      nom = nom.substring(3, nom.length -7);
-      nom = nom.split("%2C");
-      value = data[1].split("=");
-      let mail = value[1];
-      mail = mail.substring(3, mail.length -7);
-      mail = mail.split("%2C");
+      ///let value = data[0].split("=");
+      let nom = data[0].split("=")[1];
+      nom = nom.substring(3, nom.length -7).split("%2C");
+      ///value = data[1].split("=");
+      let mail = data[1].split("=")[1];
+      mail = mail.substring(3, mail.length -7).split("%2C");
       
       let personne1 = Math.floor(Math.random() * (nom.length - 1));
       let nomPers1 = nom[personne1];
