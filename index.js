@@ -11,7 +11,8 @@ http
       nom = nom.substring(3, nom.length -7).split("%2C");
       let mail = data[1].split("=")[1];
       mail = mail.substring(3, mail.length -7).split("%2C");
-      
+      let texte = decodeURI(data[2].split("=")[1])
+
       let personne1 = Math.floor(Math.random() * (nom.length - 1));
       let nomPers1 = nom[personne1];
       let destinataire = personne1;
@@ -25,9 +26,9 @@ http
         mail.splice(destinataire, 1);
         let long = nom.length - 1;
         destinataire = Math.floor(Math.random() * long);
-        envoyerMail(envoyeur, nom[destinataire]);
+        envoyerMail(envoyeur, nom[destinataire], texte);
       }
-      envoyerMail(mail[0], nomPers1);
+      envoyerMail(mail[0], nomPers1, texte);
       reponse = etat
     }  else {
       res.writeHead(403, {'Access-Control-Allow-Origin' : 'https://secret-santaclaus.github.io/'});
@@ -50,13 +51,12 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-function envoyerMail(email, dest) {
+function envoyerMail(email, dest, texte) {
   const mailOptions = {
     from: "noel.secret.santaclaus@gmail.com",
     to: email,
-    subject: "Reussi",
-    text: "Noël",
-    html: "<p>Bonjour<br>Vous devez acheter un cadeau pour </p>"+dest,
+    subject: "Noël",
+    text: texte.replace("{Nom_du_destinataire}", dest),
   };
   
   let etat = "argh"
